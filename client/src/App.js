@@ -5,8 +5,14 @@ import './App.css';
 
 class App extends Component {
   state = {
-    response: ''
+    response: '',
+    fields: {}
   };
+
+  onSubmit = (fields) => {
+    console.log('State from formComponent', fields)
+    this.setState({ fields: fields})
+  }
 
   componentDidMount() {
     this.callApi()
@@ -35,7 +41,8 @@ class App extends Component {
         <p className="App-intro">
           {this.state.response}
         </p>
-        <Form />
+        <p>{JSON.stringify(this.state.fields, null, 2)}</p>
+        <Form onSubmit={fields => this.onSubmit(fields)} />
       </div>
     );
   }

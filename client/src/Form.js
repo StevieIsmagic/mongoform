@@ -14,6 +14,17 @@ class Form extends Component {
     })
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.onSubmit(this.state)
+    console.log(this.state);
+    this.setState({
+      firstName: '',
+      lastName: '',
+      email: ''
+    })
+  }
+
 
   render() {
     return (
@@ -39,7 +50,7 @@ class Form extends Component {
             onChange={e => this.handleChange(e)}
           />
          
-          <button onClick={(e) => this.onSubmit(e)}> SUBMIT </button>
+          <button onClick={(e) => this.handleSubmit(e)}> SUBMIT </button>
         </form>
       </div>
     )
