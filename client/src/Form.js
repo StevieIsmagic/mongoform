@@ -8,6 +8,12 @@ class Form extends Component {
     email: ''
   }
 
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name] : e.target.value
+    })
+  }
+
 
   render() {
     return (
@@ -15,19 +21,22 @@ class Form extends Component {
         <h1>M-Lab Database</h1>
         <form>
           <input
+            name="firstName"
             placeholder="First Name"
             value={this.state.firstName}
-            onChange={event => this.setState({firstName: event.target.value})}
+            onChange={e => this.handleChange(e)}
           />
           <input 
+            name="lastName"
             placeholder="Last Name"
             value={this.state.lastName}
-            onChange={event => this.setState({lastName: event.target.value})}
+            onChange={e => this.handleChange(e)}
           />
           <input 
+            name="email"
             placeholder="E-Mail Address"
             value={this.state.email}
-            onChange={event => this.setState({email: event.target.value})}
+            onChange={e => this.handleChange(e)}
           />
          
           <button onClick={(e) => this.onSubmit(e)}> SUBMIT </button>
