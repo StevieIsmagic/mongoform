@@ -31,11 +31,6 @@ class Form extends Component {
     })
   }
 
-
-
-
-
-
   render() {
     return (
       <div>

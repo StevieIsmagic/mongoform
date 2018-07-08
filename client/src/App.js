@@ -6,7 +6,7 @@ import './App.css';
 
 class App extends Component {
   state = {
-    users: {},
+    users: [],
     fields: {}
   };
 
@@ -52,9 +52,11 @@ class App extends Component {
           <h1 className="App-title">MongoDB Form</h1>
         </header>
         <p className="App-intro">
-          {/* {this.state.response} */}
+          Try It Out: Updates List After POST / GET Request from MongoDB
         </p>
-        <p>{JSON.stringify(this.state.users, null, 2)}</p>
+        <p>
+          {this.state.users.map((user, i) => <li key={i}> {JSON.stringify(user, null, 2)} </li>)}
+        </p>
         <Form onSubmit={fields => this.onSubmit(fields)} />
       </div>
     );
