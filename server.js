@@ -49,6 +49,7 @@ app.listen(port, (err) => {
    keys.mongoURI,
   { useNewUrlParser: true }
 );
+mongoose.set('debug', true);
 
 /*********************
  PRODUCTION ENVIRONMENT
