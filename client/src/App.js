@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
 import Form from './Form.js';
 import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {
   state = {
-    response: {},
+    users: {},
     fields: {}
   };
 
   onSubmit = (fields) => {
     console.log('State from formComponent', fields)
-    this.setState({ fields: fields})
+    // this.setState({ fields: fields})
+    this.getUpdatedDB();
+  
   }
 
   componentDidMount() {
     this.callApi()
       .then(res => {
         console.log('CDM Response', res);
-        this.setState({ response: res })})
+        this.setState({ users: res })})
       .catch(err => console.log(err));
   }
 
@@ -31,8 +34,17 @@ class App extends Component {
     return body;
   }
 
+  getUpdatedDB() {
+    axios.get('/users')
+      .then(res => res.data)
+      .then(users => {
+        this.setState({ users })
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
-    console.log("App.js render State: ", this.state.response)
+    console.log("App.js Render State: ", this.state)
     return (
       <div className="App">
         <header className="App-header">
@@ -42,7 +54,7 @@ class App extends Component {
         <p className="App-intro">
           {/* {this.state.response} */}
         </p>
-        <p>{JSON.stringify(this.state.response, null, 2)}</p>
+        <p>{JSON.stringify(this.state.users, null, 2)}</p>
         <Form onSubmit={fields => this.onSubmit(fields)} />
       </div>
     );
