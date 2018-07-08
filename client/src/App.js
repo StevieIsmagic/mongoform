@@ -5,7 +5,7 @@ import './App.css';
 
 class App extends Component {
   state = {
-    response: '',
+    response: {},
     fields: {}
   };
 
@@ -18,12 +18,12 @@ class App extends Component {
     this.callApi()
       .then(res => {
         console.log('CDM Response', res);
-        this.setState({ response: res.express })})
+        this.setState({ response: res })})
       .catch(err => console.log(err));
   }
 
   callApi = async () => {
-    const response = await fetch('/api/hello');
+    const response = await fetch('/users');
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);
@@ -32,6 +32,7 @@ class App extends Component {
   }
 
   render() {
+    console.log("App.js render State: ", this.state.response)
     return (
       <div className="App">
         <header className="App-header">
@@ -39,9 +40,9 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          {this.state.response}
+          {/* {this.state.response} */}
         </p>
-        <p>{JSON.stringify(this.state.fields, null, 2)}</p>
+        <p>{JSON.stringify(this.state.response, null, 2)}</p>
         <Form onSubmit={fields => this.onSubmit(fields)} />
       </div>
     );

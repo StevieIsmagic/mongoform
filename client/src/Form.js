@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import axios from 'axios';
 
 
 class Form extends Component {
@@ -16,6 +17,11 @@ class Form extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
+    axios.post('/users', this.state)
+      .then(res => console.log('axios response', res))
+      .catch(err => console.log(err))
+
     this.props.onSubmit(this.state)
     console.log(this.state);
     this.setState({
@@ -24,6 +30,10 @@ class Form extends Component {
       email: ''
     })
   }
+
+
+
+
 
 
   render() {
