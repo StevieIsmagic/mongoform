@@ -39,7 +39,7 @@ class Form extends Component {
   render() {
     return (
       <div>
-        <h1>M-Lab Database</h1>
+        <h1>Database</h1>
         <form>
           <input
             name="firstName"
