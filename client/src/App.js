@@ -49,7 +49,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">MongoDB Form</h1>
+          <h1 className="App-title">MongoDB (M-Lab) Form</h1>
         </header>
         <p className="App-intro">
           Hey Try This Out: Updates List After POST / GET Request from MongoDB
