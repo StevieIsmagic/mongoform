@@ -52,7 +52,7 @@ class App extends Component {
           <h1 className="App-title">MongoDB Form</h1>
         </header>
         <p className="App-intro">
-          Try It Out: Updates List After POST / GET Request from MongoDB
+          Hey Try This Out: Updates List After POST / GET Request from MongoDB
         </p>
         <p>
           {this.state.users.map((user, i) => <li key={i}> {JSON.stringify(user, null, 2)} </li>)}
